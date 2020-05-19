@@ -22,3 +22,11 @@
 4.项目细分结构开发(首页、分类、购物车、我的)
   首页: 
     1.轮播图
+      1.设置网络请求
+      network -> request.js  
+      -> home.js 设置返回数据 
+      ->Home.vue import 实现生命周期函数created(),在created中接收result中赋值给banner和command
+      2.引入swiper组件(folder)到common中
+      3.在Home.vue中创建同级的文件夹childComponents管理Home中的组件,并在childComponents中创建HomeSwiper.vue
+      4.在HomeSwiper.vue中引入Swiper(folder)中的Swiper和SwiperItem
+      

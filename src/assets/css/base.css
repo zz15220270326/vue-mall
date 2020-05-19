@@ -5,9 +5,9 @@
 /*:root -> 获取根元素html*/
 :root {
   --color-text: #666;
-  --color-high-text: #ff5777;
-  --color-tint: #ff8198;                /* 设置背景颜色 */
-  --color-background: #fff;
+  --color-high-text: #87CEEB;
+  --color-tint: #00BFFF;                /* 设置背景颜色 */
+  --color-background: #F0F8FF;
   --font-size: 14px;
   --line-height: 1.5;
   /* 定义变量 */
