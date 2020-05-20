@@ -1,7 +1,7 @@
 <template>
   <div>
     <swiper>
-      <swiper-item v-for="item in banner" :key="item">
+      <swiper-item v-for="item in banner" >
         <a :href="item.link">
           <img :src="item.image" alt="">
         </a>
@@ -32,10 +32,5 @@
 </script>
 
 <style scoped>
-  .el-carousel-item img{
-    height:100%;
-    width:100%;
-    overflow: hidden;
-    background-size:cover;
-  }
+
 </style>
