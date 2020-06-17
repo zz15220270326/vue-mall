@@ -1,16 +1,18 @@
 <template>
-    <div id="hy-swiper">
+  <div>
+    <div id="hy-swiper" >
       <div class="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
         <slot></slot>
       </div>
       <slot name="indicator">
       </slot>
       <div class="indicator">
-        <slot name="indicator" v-if="showIndicator && slideCount>1">
+        <slot name="indicator" v-if="showIndicator && slideCount > 1">
           <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
         </slot>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -117,25 +119,27 @@
        * 操作DOM, 在DOM前后添加Slide
        */
 		  handleDom: function () {
-        // 1.获取要操作的元素
-        let swiperEl = document.querySelector('.swiper');
-        let slidesEls = swiperEl.getElementsByClassName('slide');
 
-        // 2.保存个数
-        this.slideCount = slidesEls.length;
+          // 1.获取要操作的元素
+          let swiperEl = document.querySelector('.swiper');
+          let slidesEls = swiperEl.getElementsByClassName('slide');
 
-        // 3.如果大于1个, 那么在前后分别添加一个slide
-        if (this.slideCount > 1) {
-          let cloneFirst = slidesEls[0].cloneNode(true);
-          let cloneLast = slidesEls[this.slideCount - 1].cloneNode(true);
-          swiperEl.insertBefore(cloneLast, slidesEls[0]);
-          swiperEl.appendChild(cloneFirst);
-          this.totalWidth = swiperEl.offsetWidth;
-          this.swiperStyle = swiperEl.style;
-        }
+          // 2.保存个数
+          this.slideCount = slidesEls.length;
 
-        // 4.让swiper元素, 显示第一个(目前是显示前面添加的最后一个元素)
-        this.setTransform(-this.totalWidth);
+          // 3.如果大于1个, 那么在前后分别添加一个slide
+          if (this.slideCount > 1) {
+            let cloneFirst = slidesEls[0].cloneNode(true);
+            let cloneLast = slidesEls[this.slideCount - 1].cloneNode(true);
+            swiperEl.insertBefore(cloneLast, slidesEls[0]);
+            swiperEl.appendChild(cloneFirst);
+            this.totalWidth = swiperEl.offsetWidth;
+            this.swiperStyle = swiperEl.style;
+          }
+
+          // 4.让swiper元素, 显示第一个(目前是显示前面添加的最后一个元素)
+          this.setTransform(-this.totalWidth);
+
       },
 
       /**
@@ -197,11 +201,9 @@
       changeItem: function (num) {
         // 1.移除定时器
         this.stopTimer();
-
         // 2.修改index和位置
         this.currentIndex += num;
         this.scrollContent(-this.currentIndex * this.totalWidth);
-
         // 3.添加定时器
         this.startTimer();
       }
@@ -240,6 +242,6 @@
   }
 
   .indi-item.active {
-    background-color: rgba(180,62,184,1.0);
+    background-color: rgba(20,180,220,1.0);
   }
 </style>

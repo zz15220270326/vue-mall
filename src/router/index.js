@@ -8,6 +8,7 @@ const home = () => import("../views/tab-bar/home/Home")
 const category = () => import("../views/tab-bar/category/Category")
 const cart = () => import("../views/tab-bar/cart/Cart")
 const profile = () => import("../views/tab-bar/profile/Profile")
+const detail = () => import("../views/detail/Detail")
 
 //routes config
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/profile',
     component: profile
   },
+  {
+    path: '/detail',
+    // path: '/detail/:iid',
+    component: detail
+  }
 ]
 
 const router = new Router({
