@@ -114,8 +114,11 @@
 </template>
 
 <script>
+  // 组件
+  // 滚动
   import BScroll from 'better-scroll'
-
+  // 混入
+  import {itemListener, backTopMixIns} from "common/mixins";
   export default {
     name: "Category",
     data() {
@@ -123,6 +126,7 @@
         scroll: null
       }
     },
+    mixins: [itemListener, backTopMixIns],
     // 组件创建完后调用
     mounted() {
       this.scroll = new BScroll(document.querySelector('.wrapper'), {

@@ -6,7 +6,6 @@ export function request(config,success,failure) {
   //1. 创建Axios的实例
   const instance1 = Axios.create({
     baseURL: "http://123.207.32.32:8000",
-
     timeout: 5000
   })
   //2-1. 请求拦截

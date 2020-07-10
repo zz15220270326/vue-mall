@@ -64,7 +64,7 @@
         //逻辑与&&: 判断是否可以执行后面的操作
       },
       refresh() {
-        console.log('图片加载完成!');
+        // console.log('图片加载完成!');
         this.scroll && this.scroll.refresh()
       },
       finishPullUp() {

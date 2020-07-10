@@ -14,8 +14,6 @@
             >
       <!--  HomeSwiper  -->
       <home-swiper :banner="banner" v-if="this.banner.length > 0" @swiperImgLoad="swiperImgLoad"></home-swiper>
-       <!--MintSwiper
-      <mint-swiper :banner="banner"></mint-swiper>-->
       <!--  HomeRecommendView  -->
       <home-recommend-view :recommend="recommend"></home-recommend-view>
       <!--  HomeFeatureView  -->
@@ -37,6 +35,8 @@
 
   import HomeSwiper from "./childComponents/HomeSwiper";
   // import MintSwiper from "./childComponents/MintSwiper";
+  //导入数据
+  import {BACKTOP_DISTANCE} from "common/const"
 
   import HomeRecommendView from "./childComponents/HomeRecommendView";
   import HomeFeatureView from "./childComponents/HomeFeatureView";
@@ -49,7 +49,7 @@
   import Scroll from "components/common/scroll/Scroll";
 
   //back-top
-  import BackTop from "components/content/back-top/BackTop";
+  // import BackTop from "components/content/back-top/BackTop";
 
   //获取network数据
   import {
@@ -58,7 +58,7 @@
   } from "network/home";
 
   //js
-  import {itemListener} from "common/mixins";
+  import {itemListener, backTopMixIns} from "common/mixins";
 
   export default {
     name: "Home",
@@ -71,7 +71,6 @@
       TabControl,
       GoodLists,
       Scroll,
-      BackTop
     },
     data() {
       return {
@@ -86,14 +85,14 @@
           'sell': {page: 0,list: []}
         },
         currentType: 'pop',
-        isShowBackTop: false,
+        // isShowBackTop: false,
         tcOffsetTop: 0,
         ifTcFixed: false,
         homeHeight: 0,
         homeItemListener: null
       }
     },
-    mixins: [itemListener],
+    mixins: [itemListener, backTopMixIns],
     computed:{
       goodsShow() {
         return this.goods[this.currentType].list
@@ -156,15 +155,16 @@
             break
           }
         }
+        // 两个tab-control保持一致
         this.$refs.tabControl1.currentIndex = index;
         this.$refs.tabControl2.currentIndex = index;
       },
-      backTopClick() {
+      /*backTopClick() {
         // console.log('backTopClick');
         // 滚到顶部
         // this.$refs.scroll.scroll.scrollTo(0,0,800)
         this.$refs.scroll.scrollTo(0,0)
-      },
+      },*/
       heightDetect(height) {
         // console.log(height);
         // if (height <= 1000) {
@@ -174,7 +174,7 @@
         //   this.isShowBackTop = true
         // }
         //1. 判断backTop是否显示
-        this.isShowBackTop = (-height) > 800
+        this.isShowBackTop = (-height) > BACKTOP_DISTANCE
         //2. 决定tabControl是否吸顶
         this.ifTcFixed = (-height) > this.tcOffsetTop
       },
