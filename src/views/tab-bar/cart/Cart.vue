@@ -32,7 +32,7 @@
       // cartLength() {
       //   return this.$store.getters.cartLength
       // }
-      // 两种语法    数组语法    对象语法
+      // 两种语法:     数组语法    对象语法
       // ...mapGetters(['cartLength', 'cartList'])    // .....cartLength
       ...mapGetters({
         length: 'cartLength'

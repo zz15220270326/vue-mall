@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-control">
+  <div class="tab-control ignore">
     <!--因为需求上看这里只是字不一样所以并没有使用插槽-->
     <div v-for="(item, index) in titles" :key="item"
          class="tab-control-item" :class="{active:index === currentIndex}"

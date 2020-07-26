@@ -1,7 +1,6 @@
 //导入Axios
 import Axios from "axios";
 
-
 export function request(config,success,failure) {
   //1. 创建Axios的实例
   const instance1 = Axios.create({

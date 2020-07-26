@@ -10,7 +10,9 @@ import fastClick from "fastclick"
 fastClick.attach(document.body)
 // 引入VueLazyLoad懒加载插件
 import VueLazyLoad from "vue-lazyload"
-Vue.use(VueLazyLoad)
+Vue.use(VueLazyLoad, {
+  loading: require('./assets/img/common/placeHolder.png')
+})
 // 事件总线
 Vue.prototype.$bus = new Vue()
 
