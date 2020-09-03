@@ -2,7 +2,7 @@
   <div class="home-recommend">
     <div class="home-recommend-item" v-for="item in recommend">
       <a :href="item.link">
-        <img :src="item.image" alt="">
+        <img :src="item.image" alt="" />
         <div>{{item.title}}</div>
       </a>
     </div>

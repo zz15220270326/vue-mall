@@ -10,11 +10,9 @@
 </template>
 
 <script>
-  //引入主要的外部组件
+  // 引入主要的外部组件
   import MainTabBar from "components/content/main-tab-bar/MainTabBar";
-
-
-
+  // export
   export default {
     name: 'App',
     components: {

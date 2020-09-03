@@ -4,22 +4,29 @@
     <nav-bar class="home-nav-bar">
       <div slot="center">super-mall</div>
     </nav-bar>
-    <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabControl1" class="home-tab-control" v-show="ifTcFixed"></tab-control>
-    <scroll class="content"
-            ref="scroll"
-            :probe-type="3"
-            @heightDetect="heightDetect"
-            :pull-up-load="true"
-            @loadMore="loadMore"
-            >
+    <tab-control
+      :titles="['流行','新款','精选']"
+      @tabClick="tabClick"
+      ref="tabControl1"
+      class="home-tab-control"
+      v-show="ifTcFixed"
+    />
+    <scroll
+      class="content"
+      ref="scroll"
+      :probe-type="3"
+      @heightDetect="heightDetect"
+      :pull-up-load="true"
+      @loadMore="loadMore"
+    >
       <!--  HomeSwiper  -->
-      <home-swiper :banner="banner" v-if="this.banner.length > 0" @swiperImgLoad="swiperImgLoad"></home-swiper>
+      <home-swiper :banner="banner" v-if="this.banner.length > 0" @swiperImgLoad="swiperImgLoad" />
       <!--  HomeRecommendView  -->
-      <home-recommend-view :recommend="recommend"></home-recommend-view>
+      <home-recommend-view :recommend="recommend" />
       <!--  HomeFeatureView  -->
-      <home-feature-view></home-feature-view>
-      <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabControl2" ></tab-control>
-      <good-lists :goods=goodsShow></good-lists>
+      <home-feature-view />
+      <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabControl2" />
+      <good-lists :goods=goodsShow />
     </scroll>
     <back-top @click.native="backTopClick" v-show="isShowBackTop"></back-top>
     <!-- .native: 监听组件的原生事件(click mousedown ...) -->
@@ -31,8 +38,7 @@
   //引入js文件内容
   import { debounce } from "common/utils"
   //插入组件
-  import NavBar from "components/common/navbar/NavBar";
-
+  import NavBar from "@/components/common/navbar/NavBar";
   import HomeSwiper from "./childComponents/HomeSwiper";
   // import MintSwiper from "./childComponents/MintSwiper";
   //导入数据
@@ -40,23 +46,19 @@
 
   import HomeRecommendView from "./childComponents/HomeRecommendView";
   import HomeFeatureView from "./childComponents/HomeFeatureView";
-  import TabControl from "components/content/tab-control/TabControl";
+  import TabControl from "@/components/content/tab-control/TabControl";
 
   //Goods
-  import GoodLists from "components/content/goods/GoodLists";
+  import GoodLists from "@/components/content/goods/GoodLists";
 
   //Better-scroll
-  import Scroll from "components/common/scroll/Scroll";
+  import Scroll from "@/components/common/scroll/Scroll";
 
   //back-top
   // import BackTop from "components/content/back-top/BackTop";
 
   //获取network数据
-  import {
-    getHomeMultiData,
-    getGoodsData
-  } from "network/home";
-
+  import {getHomeMultiData, getGoodsData} from "network/home";
   //js
   import {itemListener, backTopMixIns} from "common/mixins";
 
@@ -65,7 +67,6 @@
     components: {
       NavBar,
       HomeSwiper,
-      // MintSwiper,
       HomeRecommendView,
       HomeFeatureView,
       TabControl,
@@ -115,7 +116,7 @@
       },
       getGoodsData(type) {
         let page = this.goods[type].page + 1
-        getGoodsData(type,page)
+        getGoodsData(type, page)
           .then(result => {
             /*for(let item of result.goods) {
             }*/

@@ -7,7 +7,7 @@ export function request(config,success,failure) {
     baseURL: "http://123.207.32.32:8000",
     timeout: 5000
   })
-  //2-1. 请求拦截
+  //2-1. 请求拦截--拦截请求错误
   instance1.interceptors.request.use(config =>{
     // console.log(config); //将config拦截，需要若想要接收需return
     return config
@@ -15,7 +15,7 @@ export function request(config,success,failure) {
     console.log(error);
   })
   // console.log('--------------------------');
-  //2-2. 响应拦截
+  //2-2. 响应拦截--拦截响应错误
   instance1.interceptors.response.use(
     result => {
       // console.log(result.data);

@@ -1,45 +1,41 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-
-Vue.use(Router)
-
-//路由懒加载
-const home = () => import("../views/tab-bar/home/Home")
-const category = () => import("../views/tab-bar/category/Category")
-const cart = () => import("../views/tab-bar/cart/Cart")
-const profile = () => import("../views/tab-bar/profile/Profile")
-const detail = () => import("../views/detail/Detail")
-
-//routes config
+import Vue from "vue"
+import VueRouter from "vue-router"
+// use-router
+Vue.use(VueRouter)
+// lazy-load components
+const Home = () => import("views/tab-bar/home/Home")
+const Detail = () => import("views/detail/Detail")
+const Category = () => import("views/tab-bar/category/Category")
+const Cart = () => import("views/tab-bar/cart/Cart")
+const Profile = () => import("views/tab-bar/profile/Profile")
+// set-routes
 const routes = [
   {
-    path:'',
+    path: '',
     redirect: '/home'
   },
   {
     path: '/home',
-    component: home
-  },
-  {
-    path: '/category',
-    component: category
-  },
-  {
-    path: '/cart',
-    component: cart
-  },
-  {
-    path: '/profile',
-    component: profile
+    component: Home
   },
   {
     path: '/detail',
-    // path: '/detail/:iid',
-    component: detail
-  }
+    component: Detail
+  },
+  {
+    path: '/category',
+    component: Category
+  },
+  {
+    path: '/cart',
+    component: Cart
+  },
+  {
+    path: '/profile',
+    component: Profile
+  },
 ]
-
-const router = new Router({
+const router = new VueRouter({
   routes,
   mode: 'history'
 })

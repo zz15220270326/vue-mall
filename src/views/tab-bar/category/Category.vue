@@ -36,9 +36,10 @@
     display: flex;
   }
   .tab .tab-div1 {
-    width: 25%
+    width: 25%;
+    background-color: #fff;
   }
   .tab .tab-div2 {
-    width: 75%
+    width: 75%;
   }
 </style>
