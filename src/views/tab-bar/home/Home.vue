@@ -120,7 +120,8 @@
           .then(result => {
             /*for(let item of result.goods) {
             }*/
-            this.goods[type].list.push(...result.data.list)
+            let list = result.data.list
+            this.goods[type].list.push(...list)
             this.goods[type].page += 1
 
             //进行下一次上拉加载
@@ -210,7 +211,7 @@
       this.getGoodsData('sell')
 
       //3. 使两个tab-control的值保持一致
-
+      // index
     },
     mounted() {
       //3. 监听item中图片加载完成

@@ -4,10 +4,11 @@
     <nav-bar class="profile-nav-bar">
       <div slot="center">个人</div>
     </nav-bar>
-    <!-- 单独封装UserInfo -->
-    <user-info/>
+    <div class="userBaseInfo" @click="ifTologin">
+      <!-- 单独封装UserInfo -->
+    <user-info />
     <!-- section -->
-    <section class="account">
+    <section class="account" >
       <div class="account-item">
         <div class="number">
           <span class="balance">---</span>元
@@ -27,6 +28,7 @@
         <div class="account-info">我的积分</div>
       </div>
     </section>
+    </div>
     <!-- 底部整体封装 -->
     <list-view :list-data="orderList" class="order-list"></list-view>
     <list-view :list-data="serviceList" class="service-list"></list-view>
@@ -51,7 +53,6 @@
     name: "Profile",
     components: {
       NavBar,
-
       UserInfo,
       ListView
     },
@@ -65,7 +66,16 @@
         serviceList: [
           {icon: require("assets/img/profile/cart.svg"), iconColor: '#fff', info: '我的购物车'},
           {icon: require("assets/img/profile/shopping.svg"), iconColor: '#fff', info: '下载购物APP'},
-        ]
+        ],
+        isLogin: false
+      }
+    },
+    methods: {
+      ifTologin() {
+        console.log('jump to login');
+        if (!this.isLogin) {
+          this.$router.replace('/login')
+        }
       }
     }
   }

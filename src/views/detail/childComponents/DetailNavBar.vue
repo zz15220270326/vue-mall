@@ -6,9 +6,16 @@
       </div>
       <div slot="center" class="title">
         <div v-for="(item,index) in titles"
-             class="titleItem"
-             :class="{isActive: currentIndex === index}"
-             @click="titleClick(index)">{{item}}</div>
+          class="titleItem"
+          :key="index"
+          :class="{isActive: currentIndex === index}"
+          @click="titleClick(index)"
+        >
+          {{item}}
+        </div>
+      </div>
+      <div slot="right" class="to-cart" @click="toCart">
+        <img src="~assets/img/detail/cart.png" alt="">
       </div>
     </nav-bar>
   </div>
@@ -37,7 +44,10 @@
       backHome() {
         this.$router.back()
       //  this.$router.go(-1)
-      }
+      },
+      toCart() {
+        this.$router.push('/cart')
+      },
     }
   }
 </script>
@@ -58,5 +68,11 @@
     margin-top: 12px;
     width: 20px;
     height: 20px;
+  }
+  .to-cart img {
+    margin-top: 12px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
   }
 </style>

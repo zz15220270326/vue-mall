@@ -20,7 +20,7 @@ module.exports = {
     //port: 8080,
     //查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#配置代理
     proxy: null, // string | Object
-    public: '192.168.0.6:8080',
+    public: '0.0.0.0:8080',
     disableHostCheck: true,
     before(app){}
   }
